@@ -4,9 +4,7 @@ plugins {
 
 android {
     namespace = "vn.udn.ute.week08.s2415141122106"
-    compileSdk {
-        version = release(37)
-    }
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "vn.udn.ute.week08.s2415141122106"
@@ -20,15 +18,21 @@ android {
 
     buildTypes {
         release {
-            optimization {
-                enable = true
-                packageScope = setOf("androidx.**", "kotlin.**", "kotlinx.**")
-            }
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    // ĐÃ THÊM VIEW BINDING Ở ĐÂY
+    buildFeatures {
+        viewBinding = true
     }
 }
 
